@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SecondScreen extends StatefulWidget {
-  const SecondScreen({Key? key, required this.title, required this.color})
-      : super(key: key);
+  const SecondScreen({
+    Key? key,
+    required this.title,
+    required this.color,
+  }) : super(key: key);
 
   final String title;
   final Color color;

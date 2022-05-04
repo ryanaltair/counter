@@ -70,9 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: Theme.of(context).textTheme.headline4,
                 );
               },
-              buildWhen: (context, state) {
-                return context.counterValue > 0;
-              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

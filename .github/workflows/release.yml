@@ -30,13 +30,41 @@ jobs:
       - name: enabled macos desktop build
         run: flutter config --enable-macos-desktop
       - run: flutter build macos
+      - run: cd build/macos/Build/Products/Release && zip -r counter.zip counter.app
       # upload
       - name: upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: macos
-          path: build/macos/Build/Products/Release/counter.app
+          path: build/macos/Build/Products/Release/counter.zip
       - name: release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/macos/Build/Products/Release/counter.app
+          files: build/macos/Build/Products/Release/counter.zip
+  # release_windows:
+  #   name: flutter build and release
+  #   # The type of runner that the job will run on
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         flutter-version: "2.10.5"
+  #         cache: true
+  #         cache-key: windows
+  #         cache-path: ${{ runner.tool_cache }}/flutter
+  #         architecture: x64
+  #         channel: 'stable'
+  #     - run: flutter --version
+  #     # build app
+  #     - run: flutter build windows
+  #     # upload
+  #     - name: upload artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: windows
+  #         path: build/window/runner/Release/counter.app
+  #     - name: release
+  #       uses: softprops/action-gh-release@v1
+  #       with:
+  #         files: build/macos/Build/Products/Release/counter.app

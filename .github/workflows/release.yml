@@ -11,13 +11,11 @@ on:
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  permissions:
-    contents: read|write
-    checks: read|write
-    contents: read|write
-    deployments: read|write
+  
   release_macos:
     name: flutter build and release
+    permissions:
+      contents: write
     # The type of runner that the job will run on
     runs-on: macos-latest
     steps:
